@@ -1,0 +1,73 @@
+.theme-default h1 {
+    @apply xs:text-1xl xmd:text-3xl font-bold tracking-widest text-font-color;
+}
+
+.theme-default h2 {
+    @apply text-2xl font-bold tracking-widest text-font-color;
+}
+
+.theme-default h3 {
+    @apply text-xl font-bold text-font-color tracking-wider;
+}
+
+.theme-default h4 {
+    @apply xs:text-base xmd:text-lg font-bold tracking-wider text-font-color;
+}
+
+.theme-default h5 {
+    @apply xs:text-base xmd:text-md font-bold tracking-wider text-font-color;
+}
+
+.theme-default p {
+    @apply xs:text-sm xmd:text-base font-medium tracking-wide text-font-color;
+}
+
+.theme-default a {
+    @apply xs:text-sm xmd:text-base underline;
+}
+
+.theme-default {
+    --primary-100: #285fa9;
+    --primary-300: #bebebe;
+
+
+    --secondary-100: #F0F0F0;
+
+    --card-100: #ffffff;
+    --card-200: #f0f0f0;
+
+    --card-overlay: rgba(255, 255, 255, 0.9);
+
+
+
+    --primary-nav-100: #1E4D87;
+    --secondary-nav-100: #003a69;
+
+    --button-primary: #005fac;
+    --button-secondary: #B5D4ED;
+    --mv-button-primary: #00a973;
+    --mv-button-secondary: #ffffff;
+
+    --font-color: #072f33;
+    --font-light: #ffffff;
+    --font-red: #FF3B61;
+    --font-blue: #0060AF;
+    --font-black: #000000;
+    --font-disabled: rgba(0, 0, 0, 0.26);
+
+
+    --border: #bebebe;
+    --popupborder: #E0E0E0;
+    --input: #005fac;
+    --disabled: #e9ecef;
+
+    --primary-check-100: #23ba51;
+    --primary-uncheck-200: #ffffff;
+    --secondary-check-100: #0060af;
+    --secondary-uncheck-200: #ffffff;
+
+    --accordion-primary: #B5D4ED;
+
+    --boxline-100: #cccccc;
+    --boxline-200: #e5e5e5;
+}

@@ -1,0 +1,37 @@
+const validationErrors = {
+    '1001': 'Required field',
+    '1002': 'Please enter a valid email address',
+    '1003': 'NHS number must be 10 characters',
+    '1004': 'You must agree to our Terms of Service',
+    '1005': 'Password must be at least 8 characters',
+    '1006': 'Passwords should be the same',
+    '1007':
+      'Password must have 8 or more characters, at least one uppercase letter, one number and one special character',
+    '1008': 'Too Short!',
+    '1009': 'Too Long!',
+    '1010': 'Length must be less than or equal to 255 characters',
+    '1011': 'This field is must be numerical',
+    '1012': 'Mobile number is not valid',
+    '1013': 'you must specify a number',
+    '1014': 'Length must be less than or equal to 1000 characters',
+    '1015': 'Only alphabets are allowed for this field',
+    '1016': 'Length must be less than or equal to 255 characters',
+    '1017': 'Length must be less than or equal to 250 characters',
+    '1018': 'Length must be less than or equal to 70 characters',
+    '1019': 'Length must be 2 characters long',
+    '1020': 'Length must be 3 characters long',
+    '1021': 'Length must be 1 character long',
+    '1022': 'Length must be less than or equal to 500 characters',
+    '1023': 'Length must be less than or equal to 400 characters',
+    '1024': 'Length must be less than or equal to 300 characters',
+    '1025': 'Length must be less than or equal to 50 characters',
+    '1026': 'Length must be less than 3 characters',
+    '1027': 'must be less than or equal to 400',
+    '1028': 'Email not valid',
+    '1029': '*Email is required',
+    '1030': '*Password is required',
+    '1031': '*Confirm Password is required',
+  };
+  
+  export default validationErrors;
+  

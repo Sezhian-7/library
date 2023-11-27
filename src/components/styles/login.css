@@ -1,0 +1,3 @@
+.colorChange {
+    @apply bg-primary-100 text-font-light;
+}
