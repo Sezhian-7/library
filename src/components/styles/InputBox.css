@@ -1,0 +1,44 @@
+.input-group {
+    @apply relative;
+}
+
+.input-group .text-field {
+    @apply border-input border py-2 px-4 rounded-sm text-font-color;
+}
+
+.input-group .text-field:focus {
+    @apply outline-none border border-primary-100;
+}
+
+.input-group .w-100 {
+    @apply w-full;
+}
+
+.input-search,
+.input-password {
+    @apply flex absolute items-center h-full top-0 z-10;
+    width: 40px;
+}
+
+.input-password {
+    @apply right-2 cursor-pointer;
+}
+
+.input-search {
+    @apply right-0;
+}
+
+.input-group label {
+    @apply text-md block mb-3 font-bold text-left tracking-wide text-font-color;
+}
+
+.csv-input .input-group .text-field {
+    @apply rounded-none py-3 !important;
+}
+
+.input-group .text-field-date {
+    @apply border py-2 px-4 relative bg-transparent text-sm tracking-wide rounded w-full;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+

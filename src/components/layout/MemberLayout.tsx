@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import FooterBar from "../footer/FooterBar";
+// import FooterBar from "../footer/FooterBar";
 import HeaderBar from '../header/HeaderBar';
 
 interface MemberLayoutProps {
@@ -26,9 +26,9 @@ const MemberLayout: React.FC<MemberLayoutProps> = ({ children }) => {
 
     const totalHeight: any = headerHeight + footerHeight;
     const customHeight = `calc(100vh - ${totalHeight.toString()}px)`;
-    // let navBodyHeight = window.innerHeight;
-    // navBodyHeight = navBodyHeight - totalHeight;
-    let minBodyHeight = 750 || customHeight;
+    let navBodyHeight = window.innerHeight;
+    navBodyHeight = navBodyHeight - totalHeight;
+    let minBodyHeight =  customHeight ||  navBodyHeight;
 
     return (
         <section>
@@ -43,7 +43,7 @@ const MemberLayout: React.FC<MemberLayoutProps> = ({ children }) => {
             {/* </div> */}
 
             <div className="footer" ref={footerRef}>
-                <FooterBar />
+                {/* <FooterBar /> */}
             </div>
         </section>
     );

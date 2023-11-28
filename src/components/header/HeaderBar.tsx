@@ -7,7 +7,8 @@ interface HeaderBarProps {
 const HeaderBar: React.FC<HeaderBarProps> = () => {
     return (
         <>
-            <h2>Header Menu</h2>
+            <h1 className="text-center my-4 text-primary">Project Management</h1>
+            <p className="text-center lead">Currently 0 task(s) pending</p>
         </>
     );
 }

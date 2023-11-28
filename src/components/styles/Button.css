@@ -1,0 +1,99 @@
+.btn {
+    @apply xs:text-sm xmd:text-lg font-medium cursor-pointer rounded-[30px] no-underline py-2 px-8 min-w-[135px];
+}
+.primary-btn {
+    @apply bg-button-primary text-font-light ;
+}
+.btn-login {
+    @apply h-[50px];
+}
+.btn-padding {
+    @apply  min-w-[130px] h-[45px] font-bold py-2 px-4 xs:text-xs md:text-sm !important;
+}
+
+.btn-diary {
+    @apply bg-card-100 text-font-black !important;
+    border: 1px solid #005FAC !important;  
+}
+.food-seession-btn {
+    @apply text-left mt-6 w-full;
+}
+.btn-view-remove {
+    @apply min-w-[130px] !important;
+}
+.btn-other-entry {
+    @apply min-h-[50px] min-w-[350px] !important;
+}
+.btn-relative {
+    @apply relative;
+}
+.btn-absolute {
+    @apply absolute xs:top-9 xmd:top-10 right-4;
+}
+.disabled {
+    @apply hover:bg-transparent text-font-disabled bg-disabled border border-disabled shadow-none hover:border-disabled !important;
+  }
+ 
+/* Withing Button Start*/
+
+.btn-withing {
+    @apply bg-button-secondary rounded-none m-2 pl-0 pr-0 min-w-[130px] min-h-[65px] text-sm;
+}
+.btn-passive {
+    @apply bg-button-secondary rounded-none text-sm p-4 mr-3 md:mr-5 mb-5 min-h-[75px] max-w-[145px];
+}
+.graph-btn {
+    @apply bg-button-secondary rounded-[28px] text-sm p-4 mr-1 mb-2 min-h-[50px] max-w-[145px];
+}
+.btn-active:active, .btn-active:focus{
+   @apply bg-button-primary text-white
+}
+.btn-week {
+    @apply rounded-md text-sm;
+}
+.cursor-set {
+    @apply cursor-default;
+}
+.btn-percent {
+    @apply bg-card-200;
+}
+.btn-max-width {
+    @apply max-w-[50px]
+}
+/* Withing Button End*/
+
+@media (max-width:500px) {
+    .btn-other-entry {
+        @apply min-w-[250px] !important;
+    }
+}
+
+.previous-btn .back-icon svg{
+    @apply absolute bottom-[14px] left-[11px];
+}
+
+.previous-btn .left-side-arrow {
+    @apply w-full;
+    padding: 0px 22px 0px 29px !important;
+}
+
+.next-btn .back-icon svg{
+    @apply absolute bottom-[13px] right-[12px];
+    transform: rotate(180deg) !important;
+}
+
+.next-btn .right-side-arrow {
+    @apply w-full;
+    padding: 0px 29px 0px 22px !important;
+}
+.default-btn-active {
+    @apply bg-button-primary text-white !important;
+}
+@media (max-width:400px) {
+.btn-absolute {
+    top: 44px !important;
+}
+.btn-session-day {
+    @apply px-10 !important;
+}
+}
