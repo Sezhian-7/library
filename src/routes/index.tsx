@@ -9,7 +9,7 @@ interface indexProps {
 
 }
 
-const AppRoute: React.FC<indexProps> = ({ }) => {
+const AppRoute: React.FC<indexProps> = () => {
     return (
         <BrowserRouter>
             <Routes>

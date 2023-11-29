@@ -1,0 +1,103 @@
+dialog {
+    margin: auto;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    padding: 0em;
+    place-content: center;
+    background: transparent;
+  }
+  
+  .backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    backdrop-filter: blur(2px);
+  }
+  
+  dialog {
+    background-color: rgb(255, 255, 255);
+  }
+  dialog[open]:not(:focus-within) {
+    background-color: rgb(255, 255, 254);
+    transition: background-color 0.01s ease;
+  }
+
+
+
+
+
+
+  /*Popup card*/
+.popup-wrapper {
+    @apply fixed w-full  flex items-center justify-center top-0 left-0;
+    z-index: 9999;
+    min-height: 100%;
+  }
+  .popup-wrapper.hide {
+    @apply hidden;
+  }
+
+  .popup-card {
+    @apply relative mx-auto bg-white rounded-[25px] shadow-lg z-10;
+    max-width: 600px;
+    width: 90%;
+  }
+  @media (max-width: 576px) {
+    .popup-card {
+      text-align: left;
+    }
+  }
+  .popup-card h2 {
+    @apply text-lg font-bold uppercase   mb-4;
+  }
+  .popup-card p {
+    @apply text-base ;
+  }
+  .popup-card-content {
+    @apply mx-auto;
+    max-width: 1100px;
+  }
+  /* .popup-card-content::-webkit-scrollbar {
+    display: none;
+  } */
+  .popup-card-content .btn.outlined {
+    @apply  text-white uppercase border-card-100  w-full;
+    max-width: 220px;
+  }
+  .popup-card-close {
+    @apply absolute top-[1.5rem] right-[1.5rem];
+  }
+  .popup-card-circle {
+    @apply flex items-center justify-center rounded-full cursor-pointer p-1.5;
+  }
+  .popup-scroll-hide {
+    @apply overflow-hidden;
+  }
+  .popup-card.md {
+    max-width: 600px;
+    width: 90%;
+  }
+  .popup-card.lg {
+    max-width: 1100px;
+    width: 90%;
+  }
+
+
+
+  
+
+  .popup-body {
+    @apply px-16 py-8 my-4;
+    max-height: calc(100vh - 140px);
+    min-height: 250px;
+  }
+  @media (max-width: 800px) {
+    .popup-body {
+      max-height: calc(100vh - 140px);
+    }
+  }

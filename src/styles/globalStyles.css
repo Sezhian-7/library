@@ -3,5 +3,5 @@
 }
 
 .block-center {
-    @apply max-w-[425px] m-auto w-[85%] xmd:w-[90%];
+    @apply max-w-[625px] m-auto w-[85%] xmd:w-[90%];
 }

@@ -1,15 +1,17 @@
-import React from 'react'
+import React from 'react';
 import MemberLayout from '../components/layout/MemberLayout';
 import { InputBox } from '../components/forms/InputBox';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from '../components/button/Button';
+import { CustomDataTable } from '../components/customDataTable/CustomDataTable';
 
 interface MemberDashboardProps {
 
 }
 
 export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
+
     const defaultFormVal: any = {
         title: "",
         description: "",
@@ -30,42 +32,65 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
         },
     });
 
+    const particiantUser = [{
+        id: 1,
+        firstName: "Sabapathi",
+        lastName: "S",
+        email: "sabapathi@mindwaveventures.com"
+    },
+    {
+        id: 2,
+        firstName: "Lena",
+        lastName: "Sri",
+        email: "lena@mindwaveventures.com"
+    },
+    {
+        id: 3,
+        firstName: "Smith",
+        lastName: "jon",
+        email: "lena@mindwaveventures.com"
+    }
+    ];
+
     return (
         <MemberLayout>
-            <section>
-                <div className="main-section">
-                    <div className="block-center">
-                        <br /><br />
-                        <InputBox
-                            type="text"
-                            placeholder="enter title"
-                            id="title"
-                            name="title"
-                            label='Title'
-                        />
-                        <br />
-                        <InputBox
-                            type="text"
-                            placeholder="enter description"
-                            id="description"
-                            name="description"
-                            label='Description'
-                        />
-                        <br />
-                        <div className=' text-right'>
-                            <Button
-                                btntype="button"
-                                text="Add"
-                                addClass="primary-btn"
+            <main>
+
+                <section>
+                    <div className="main-section">
+                        <div className="block-center">
+                            <br /><br />
+                            <InputBox
+                                type="text"
+                                placeholder="enter name"
+                                id="name"
+                                name="name"
+                                label='Name'
                             />
+                            <br />
+                            <InputBox
+                                type="text"
+                                placeholder="enter email"
+                                id="email"
+                                name="email"
+                                label='Email'
+                            />
+                            <br />
+                            <div className=' text-right'>
+                                <Button
+                                    btntype="button"
+                                    text="Add"
+                                    addClass="primary-btn"
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section >
-
-            <section>
-                <h3> List section</h3>
-            </section>
+                </section >
+                <br /><br />
+                <section className='block-center'>
+                    <CustomDataTable userList={particiantUser} />
+                </section>
+            </main>       
         </MemberLayout >
 
     );

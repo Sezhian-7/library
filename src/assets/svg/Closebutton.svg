@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="21" viewBox="0 0 20 21">
+  <defs>
+    <clipPath id="clip-Close_button">
+      <rect width="20" height="21"/>
+    </clipPath>
+  </defs>
+  <g id="Close_button" data-name="Close button" clip-path="url(#clip-Close_button)">
+    <rect width="20" height="21" fill="#fff"/>
+    <path id="Path_11125" data-name="Path 11125" d="M20.772,6.589,19.184,5l-6.3,6.3L6.589,5,5,6.589l6.3,6.3L5,19.184l1.589,1.589,6.3-6.3,6.3,6.3,1.589-1.589-6.3-6.3Z" transform="translate(-2.886 -2.386)" fill="#23355f" stroke="#24365f" stroke-width="2"/>
+  </g>
+</svg>

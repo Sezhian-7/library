@@ -1,0 +1,49 @@
+.action-view {
+    @apply text-font-blue font-bold;
+  }
+  .rdt_TableHeadRow {
+    @apply font-medium bg-accordion-primary !important;
+  }
+  .fd-overview .rdt_TableRow {
+    @apply border-0 items-start !important;
+  }
+  .view-btn {
+    @apply p-0;
+  }
+  .view-btn-margin {
+    @apply mb-3;
+  }
+  .rdt_TableCol:first-child {
+    @apply pl-4 !important;
+  }
+  .rdt_TableCell {
+    @apply py-4 px-4 !important;
+  }
+  .rdt_TableCol:last-child {
+    @apply justify-start;
+  }
+  /* .rdt_TableCol:last-child .rdt_TableCol_Sortable {
+  @apply ml-12;
+  } */
+  .rdt_TableCell:last-child {
+    @apply justify-start;
+  }
+  .rdt_TableCell div:first-child {
+    @apply whitespace-normal !important;
+  }
+  .dashboar-action .rdt_TableCol:last-child .rdt_TableCol_Sortable {
+    @apply ml-0 !important;
+  }
+  .dashboar-action{
+   @apply w-full;
+  }
+  .fd-overview .rdt_TableCol:last-child {
+    @apply justify-center;
+  
+  }
+  .clinic-overview .rdt_TableCol:last-child {
+    @apply justify-start;
+  }
+  .clinic-overview .rdt_TableRow {
+    @apply border-0 items-start !important;
+  }
