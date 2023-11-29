@@ -1,17 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import DataTable from "react-data-table-component";
 import "../styles/customDataTable.css";
 import { DialogPopup } from '../DialogPopup/DialogPopup';
 import { InputBox } from '../forms/InputBox';
 import { Button } from '../button/Button';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { removeTaskFromList, setSelectedTask, updateTaskInList } from '../../slices/tasksSlice';
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import validationErrors from '../../services/ValidationSchema';
 interface CustomDataTableProps {
     userList?: any;
 }
 
 export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) => {
     const [dialogOpen, setDialogOpen] = useState(false);
+    const dispatch = useDispatch();
+    const { selecetedTask } = useSelector((state: any) => state.tasks)
+
+    useEffect(() => {
+        if (Object.keys(selecetedTask).length !== 0) {
+            formik.setFieldValue('name', selecetedTask.name);
+            formik.setFieldValue('email', selecetedTask.email);
+            formik.setFieldValue('id', selecetedTask.id);
+        }
+    }, [selecetedTask])
+
+
+    const updateTask = (res: any) => {
+        dispatch(setSelectedTask(res))
+    }
+
+    const deleteTask = (res: any) => {
+        dispatch(removeTaskFromList(res))
+    }
 
     const columns = [
         {
@@ -38,21 +61,46 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
             name: "Action",
             width: "150px",
             cell: (row: any) => (
-                <>
-                    <span className="underline cursor-pointer">
-                        <div onClick={() => {
-                            setDialogOpen(true);
-                        }}> View</div>
-                    </span>
-                    <span className="underline cursor-pointer ml-4">
-                        <div onClick={() => {
-                        }}> Delete</div>
-                    </span>
-                </>
+                <div className='flex'>
+                    <div className="underline cursor-pointer" onClick={() => {
+                        setDialogOpen(true);
+                        updateTask(row)
+                    }}> View</div>
+
+                    <div className="underline cursor-pointer ml-4" onClick={() => {
+                        deleteTask(row)
+                    }}> Delete</div>
+
+                </div>
 
             ),
         },
     ];
+
+    const defaultFormVal: any = {
+        name: "",
+        email: "",
+    };
+
+    const rejectReasonSchema = Yup.object().shape({
+        name: Yup.string().required(validationErrors[1001]),
+        email: Yup.string()
+            .email(validationErrors[1002])
+            .required(validationErrors[1029]),
+    });
+
+
+    const formik = useFormik({
+        initialValues: defaultFormVal,
+        validationSchema: rejectReasonSchema,
+
+        onSubmit: async (values: any) => {
+            console.log("values updated ", values)
+            dispatch(updateTaskInList(values))
+            setDialogOpen(false)
+        },
+    });
+
 
     return (
 
@@ -71,29 +119,46 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
                 }}
             >
                 <div>
-                    <InputBox
-                        type="text"
-                        placeholder="enter name"
-                        id="name"
-                        name="name"
-                        label='Name'
-                    />
-                    <br />
-                    <InputBox
-                        type="text"
-                        placeholder="enter email"
-                        id="email"
-                        name="email"
-                        label='Email'
-                    />
-                    <br />
-                    <div className=' text-right'>
-                        <Button
-                            btntype="button"
-                            text="Update"
-                            addClass="primary-btn"
+                    <form action="submit" className="" onSubmit={formik.handleSubmit}>
+                        <InputBox
+                            type="text"
+                            placeholder="enter name"
+                            id="name"
+                            name="name"
+                            label='Name'
+                            onChange={formik.handleChange}
+                            values={formik.values.name}
+                            errors={
+                                formik.touched.name && formik.errors.name
+                                    ? formik.errors.name
+                                    : null
+                            }
                         />
-                    </div>
+                        <br />
+                        <InputBox
+                            type="text"
+                            placeholder="enter email"
+                            id="email"
+                            name="email"
+                            label='Email'
+                            onChange={formik.handleChange}
+                            values={formik.values.email}
+                            errors={
+                                formik.touched.email && formik.errors.email
+                                    ? formik.errors.email
+                                    : null
+                            }
+                        />
+                        <br />
+                        <div className=' text-right'>
+                            <Button
+                                btntype="submit"
+                                text="Update"
+                                addClass="primary-btn"
+                            />
+                        </div>
+                    </form>
+
                 </div>
             </DialogPopup>
         </>

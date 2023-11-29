@@ -19,9 +19,7 @@ interface MemberDashboardProps {
 
 export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
     const dispatch = useDispatch();
-
     const { tasksList } = useSelector((state: any) => state.tasks)
-
 
     const defaultFormVal: any = {
         name: "",
@@ -30,7 +28,9 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
 
     const rejectReasonSchema = Yup.object().shape({
         name: Yup.string().required(validationErrors[1001]),
-        email: Yup.string().required(validationErrors[1030]),
+        email: Yup.string()
+            .email(validationErrors[1002])
+            .required(validationErrors[1029]),
     });
 
 
@@ -69,7 +69,6 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
     return (
         <MemberLayout>
             <main>
-
                 <section>
                     <div className="main-section">
                         <div className="block-center">

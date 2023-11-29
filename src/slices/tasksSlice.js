@@ -22,11 +22,11 @@ const tasksSlice = createSlice({
             state.tasksList = state.tasksList.map((task) => task.id === action.payload.id ? action.payload : task);
         },
         setSelectedTask: (state, action) => {
-            state.tasksList = action.payload;
+            state.selecetedTask = action.payload;
         }
     }
 })
 
-export const { addTaskToList, removeTaskFromList, updateTaskInList, selecetedTask } = tasksSlice.actions;
+export const { addTaskToList, removeTaskFromList, updateTaskInList, setSelectedTask } = tasksSlice.actions;
 
 export default tasksSlice.reducer
