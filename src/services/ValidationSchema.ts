@@ -29,7 +29,7 @@ const validationErrors = {
     '1027': 'must be less than or equal to 400',
     '1028': 'Email not valid',
     '1029': '*Email is required',
-    '1030': '*Password is required',
+    '1030': 'Password is required',
     '1031': '*Confirm Password is required',
   };
   

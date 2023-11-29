@@ -8,20 +8,19 @@ import { Button } from '../button/Button';
 
 interface CustomDataTableProps {
     userList?: any;
-
 }
 
 export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) => {
-    const [dialogOpen, setDialogOpen] = useState(true);
+    const [dialogOpen, setDialogOpen] = useState(false);
 
     const columns = [
         {
             name: "Name",
             width: "170px",
-            selector: (row: any) => row.firstName + " " + row.lastName,
+            selector: (row: any) => row.name,
             cell: (row: any) => (
                 <div tabIndex={0}>
-                    {row && row.firstName + " " + row.lastName ? (row.firstName + " " + row.lastName) : ''}
+                    {row && row.name ? (row.name) : ''}
                 </div>
             ),
         },
@@ -72,7 +71,6 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
                 }}
             >
                 <div>
-                   
                     <InputBox
                         type="text"
                         placeholder="enter name"
@@ -97,7 +95,6 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
                         />
                     </div>
                 </div>
-
             </DialogPopup>
         </>
     );

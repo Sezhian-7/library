@@ -5,21 +5,32 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from '../components/button/Button';
 import { CustomDataTable } from '../components/customDataTable/CustomDataTable';
+import validationErrors from '../services/ValidationSchema';
+import { addTaskToList } from '../slices/tasksSlice';
+import { useDispatch } from 'react-redux';
+
+
+import { useSelector } from 'react-redux';
+
 
 interface MemberDashboardProps {
 
 }
 
 export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
+    const dispatch = useDispatch();
+
+    const { tasksList } = useSelector((state: any) => state.tasks)
+
 
     const defaultFormVal: any = {
-        title: "",
-        description: "",
+        name: "",
+        email: "",
     };
 
     const rejectReasonSchema = Yup.object().shape({
-        title: Yup.string().optional(),
-        description: Yup.string().optional(),
+        name: Yup.string().required(validationErrors[1001]),
+        email: Yup.string().required(validationErrors[1030]),
     });
 
 
@@ -29,6 +40,9 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
 
         onSubmit: async (values: any) => {
             console.log("values ", values)
+            dispatch(addTaskToList(values))
+            formik.setFieldValue('name', '');
+            formik.setFieldValue('email', '');
         },
     });
 
@@ -60,37 +74,54 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
                     <div className="main-section">
                         <div className="block-center">
                             <br /><br />
-                            <InputBox
-                                type="text"
-                                placeholder="enter name"
-                                id="name"
-                                name="name"
-                                label='Name'
-                            />
-                            <br />
-                            <InputBox
-                                type="text"
-                                placeholder="enter email"
-                                id="email"
-                                name="email"
-                                label='Email'
-                            />
-                            <br />
-                            <div className=' text-right'>
-                                <Button
-                                    btntype="button"
-                                    text="Add"
-                                    addClass="primary-btn"
+                            <form action="submit" className="" onSubmit={formik.handleSubmit}>
+                                <InputBox
+                                    type="text"
+                                    placeholder="enter name"
+                                    id="name"
+                                    name="name"
+                                    label='Name'
+                                    onChange={formik.handleChange}
+                                    values={formik.values.name}
+                                    errors={
+                                        formik.touched.name && formik.errors.name
+                                            ? formik.errors.name
+                                            : null
+                                    }
                                 />
-                            </div>
+                                <br />
+                                <InputBox
+                                    type="text"
+                                    placeholder="enter email"
+                                    id="email"
+                                    name="email"
+                                    label='Email'
+                                    onChange={formik.handleChange}
+                                    values={formik.values.email}
+                                    errors={
+                                        formik.touched.email && formik.errors.email
+                                            ? formik.errors.email
+                                            : null
+                                    }
+                                />
+                                <br />
+                                <div className=' text-right'>
+                                    <Button
+                                        btntype="submit"
+                                        text="Add"
+                                        addClass="primary-btn"
+                                    />
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </section >
                 <br /><br />
                 <section className='block-center'>
-                    <CustomDataTable userList={particiantUser} />
+                    < CustomDataTable userList={tasksList} />
                 </section>
-            </main>       
+            </main>
         </MemberLayout >
 
     );
