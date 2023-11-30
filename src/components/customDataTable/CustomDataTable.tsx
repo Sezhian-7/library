@@ -6,7 +6,7 @@ import { DialogPopup } from '../DialogPopup/DialogPopup';
 import { InputBox } from '../forms/InputBox';
 import { Button } from '../button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeTaskFromList, setSelectedTask, updateTaskInList } from '../../slices/tasksSlice';
+import { getTasksDeleteServer, getTasksUpdateServer, removeTaskFromList, setSelectedTask } from '../../slices/tasksSlice';
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import validationErrors from '../../services/ValidationSchema';
@@ -16,7 +16,7 @@ interface CustomDataTableProps {
 
 export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) => {
     const [dialogOpen, setDialogOpen] = useState(false);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
     const { selecetedTask } = useSelector((state: any) => state.tasks)
 
     useEffect(() => {
@@ -33,7 +33,11 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
     }
 
     const deleteTask = (res: any) => {
-        dispatch(removeTaskFromList(res))
+        dispatch(getTasksDeleteServer(res))
+            .unwrap()
+            .then(() => {
+                dispatch(removeTaskFromList(res))
+            })
     }
 
     const columns = [
@@ -96,7 +100,7 @@ export const CustomDataTable: React.FC<CustomDataTableProps> = ({ userList }) =>
 
         onSubmit: async (values: any) => {
             console.log("values updated ", values)
-            dispatch(updateTaskInList(values))
+            dispatch(getTasksUpdateServer(values))
             setDialogOpen(false)
         },
     });

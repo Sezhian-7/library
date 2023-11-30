@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Button } from '../components/button/Button';
 import { CustomDataTable } from '../components/customDataTable/CustomDataTable';
 import validationErrors from '../services/ValidationSchema';
-import { addTaskToList, getTasksFromServer } from '../slices/tasksSlice';
+import { getTasksFromServer, getTasksPostServer } from '../slices/tasksSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 interface MemberDashboardProps {
@@ -36,10 +36,14 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
         validationSchema: rejectReasonSchema,
 
         onSubmit: async (values: any) => {
-            console.log("values ", values)
-            dispatch(addTaskToList(values))
-            formik.setFieldValue('name', '');
-            formik.setFieldValue('email', '');
+            try {
+                console.log("values ", values)
+                await dispatch(getTasksPostServer(values));
+                formik.setFieldValue('name', '');
+                formik.setFieldValue('email', '');
+            } catch (error) {
+                console.log("error", error);
+            }
         },
     });
 
