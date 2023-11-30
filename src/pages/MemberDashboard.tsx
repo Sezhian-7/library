@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MemberLayout from '../components/layout/MemberLayout';
 import { InputBox } from '../components/forms/InputBox';
 import { useFormik } from "formik";
@@ -6,19 +6,16 @@ import * as Yup from "yup";
 import { Button } from '../components/button/Button';
 import { CustomDataTable } from '../components/customDataTable/CustomDataTable';
 import validationErrors from '../services/ValidationSchema';
-import { addTaskToList } from '../slices/tasksSlice';
-import { useDispatch } from 'react-redux';
-
-
-import { useSelector } from 'react-redux';
-
+import { addTaskToList, getTasksFromServer } from '../slices/tasksSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface MemberDashboardProps {
 
 }
 
 export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
+
     const { tasksList } = useSelector((state: any) => state.tasks)
 
     const defaultFormVal: any = {
@@ -46,25 +43,29 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = () => {
         },
     });
 
-    const particiantUser = [{
-        id: 1,
-        firstName: "Sabapathi",
-        lastName: "S",
-        email: "sabapathi@mindwaveventures.com"
-    },
-    {
-        id: 2,
-        firstName: "Lena",
-        lastName: "Sri",
-        email: "lena@mindwaveventures.com"
-    },
-    {
-        id: 3,
-        firstName: "Smith",
-        lastName: "jon",
-        email: "lena@mindwaveventures.com"
-    }
-    ];
+    // const particiantUser = [{
+    //     id: 1,
+    //     firstName: "Sabapathi",
+    //     lastName: "S",
+    //     email: "sabapathi@mindwaveventures.com"
+    // },
+    // {
+    //     id: 2,
+    //     firstName: "Lena",
+    //     lastName: "Sri",
+    //     email: "lena@mindwaveventures.com"
+    // },
+    // {
+    //     id: 3,
+    //     firstName: "Smith",
+    //     lastName: "jon",
+    //     email: "lena@mindwaveventures.com"
+    // }
+    // ];
+
+    useEffect(() => {
+        dispatch(getTasksFromServer());
+    }, [dispatch]);
 
     return (
         <MemberLayout>
